@@ -1,0 +1,45 @@
+\title{[CIAI]-Projet Multi-Lots / Multi-\'Equipe \\ \normalsize{Application \`a la supervision \`a distance d'une ligne de conditionnement et d'exp\'edition}}
+\author{[H4303] \\ \textsc{Deville} Romain \\ \textsc{Lefebvre} L\'eo \\ \textsc{Leveugle} R\'emi \\ \textsc{Lul\'e} Pierre \\ \textsc{Ocello} Andrea \\ \textsc{Primault} Vincent}
+
+\input{H4303-include.tex}
+
+\begin{document}
+
+\maketitle
+\clearpage
+\newpage
+\tableofcontents
+\newpage
+
+\part{Def}
+\section{Définition des structures}
+\subsection{qlkdsfjsmlkfj}
+\lstset{
+	language=C
+	} 
+\begin{lstlisting}
+struct ORD_COND
+{
+2 octets : qte_palette
+1 octet : type_piece
+2 octets : nb_piece
+}
+
+struct ORD_EXP
+{
+2 octets : num_commande
+liste : num_lot (2 octets)
+        nb_palette (2 octets)
+}
+\end{lstlisting}
+\newpage
+
+3 type de message de log \\
+Type Info -> Char * ...\\
+Type Réponse -> GetStock ..\\
+Type Error -> char * ...\\
+
+\subsection{Type Info}
+
+\end{document}
+
