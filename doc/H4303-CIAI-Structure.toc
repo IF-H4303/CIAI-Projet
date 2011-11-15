@@ -1,0 +1,4 @@
+\select@language {french}
+\contentsline {part}{I\hspace {1em}Def}{3}{part.1}
+\contentsline {section}{\numberline {1}D\IeC {\'e}finition des structures}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}qlkdsfjsmlkfj}{3}{subsection.1.1}

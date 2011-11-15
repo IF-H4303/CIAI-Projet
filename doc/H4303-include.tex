@@ -1,0 +1,152 @@
+\documentclass[a4paper, 9pt]{article}
+
+% Faire des marges un peu moins large que celles par defaut
+\usepackage[top=20mm, bottom=15mm, left=10mm, right=10mm]{geometry}
+%\usepackage{ucs}
+\usepackage[utf8]{inputenc} % Pour l'encodage 
+% Reconnaitre les carateres accentues dans le source.
+\usepackage[T1]{fontenc} 
+% Meilleurs polices
+\usepackage[sc]{mathpazo}
+%\usepackage{concmath}
+\usepackage[francais]{babel}
+% Insertion d'images
+\usepackage{graphicx}
+% Pour le listing de code
+\usepackage{listings}
+% Pour la coloration syntaxique
+\usepackage{xcolor}
+% Pour fixer l'interlignage
+\usepackage{setspace} 
+% Pour faire un index (ici glossaire)
+\usepackage{makeidx}
+% Pour gérer les liens internes et les URL cliquables
+\usepackage{url}
+% Pour les headers et footers
+\usepackage{fancyhdr}
+% Pour le logo en haut a droite
+\usepackage{eso-pic} 
+% Pour l'enroulement du texte autour des figures
+\usepackage{wrapfig}
+% Pour la couverture en PDF pleine page
+\usepackage{pdfpages} 
+% Pour la biblio bibtex
+\usepackage{bibunits}
+% Pour gérer les éléments flottants
+\usepackage{float}
+% Pour les cadres à ombrage du glossaire
+\usepackage{fancybox}
+% Pour faire des sous-figures correctement numérotés
+\usepackage{subfigure}
+% Pour mettre les liens cliquables
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{algorithmic}
+\usepackage{ifthen}
+\usepackage{xargs}
+\NoAutoSpaceBeforeFDP
+
+  % Configuration de la coloration syntaxique du code
+  \definecolor{colKeys}{rgb}{0,0,1}
+  \definecolor{colIdentifier}{rgb}{0,0,0}
+  \definecolor{colComments}{rgb}{0.1,0.6,0.3}
+  \definecolor{colString}{rgb}{0.6,0.1,0.1}
+  
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+}
+
+\setlength{\headheight}{14.5pt}
+
+% Configuration des options 
+\lstset{%
+    identifierstyle=\color{colIdentifier},%
+    basicstyle=\ttfamily\scriptsize, %
+    keywordstyle=\color{colKeys},%
+    stringstyle=\color{colString},%
+    commentstyle=\color{colComments},%
+    columns = flexible,%
+    %tabsize = 8,%
+    showspaces = false,%
+    numberstyle=\tiny,%
+    frame = single,frameround=tttt,%
+    breaklines = true, breakautoindent = true,%
+    captionpos = b,%
+    xrightmargin=10mm, xleftmargin = 15mm, framexleftmargin = 7mm,%
+    includerangemarker=false,
+    rangeprefix=/*\{,
+    rangesuffix=\}*/,
+  }%
+
+% Permet l'ajout de code par insertion du fichier le contenant
+% Coloration + ajout titre
+% Les arguments sont :
+% $1 : nom du fichier à inclure
+% $2 : le type de langage (C++, C, Java ...)
+\newcommand{\addCode}[5]{%
+
+
+  % Configuration des options 
+  \lstset{%
+    language = #1,
+    numbers = #5,%
+   }%
+    \begin{center}
+    \lstinputlisting[linerange=#3-#4]{#2}
+    \end{center}
+}
+
+%Permet d'ajouter un exemple
+
+\newcommand{\wbalTwo}[2][Wikimedia]{This is the Wikibook about LaTeX supported by {#1} and {#2}!}
+
+\newcommandx{\addExample}[9][5 = , 6 = ,7= ,8= ,9=none ]
+{
+    \begin{center}
+    \footnotesize
+        \definecolor{lightlgray}{rgb}{0.95,0.95,0.95}
+        \fcolorbox{black}{lightlgray}{
+            \begin{minipage}{0.9\linewidth}
+                \setlength{\fboxrule}{1pt}
+                \framebox{{\Large\texttt{#1}}}
+                \setlength{\fboxrule}{0.4pt}
+                \footnotesize
+                \begin{description}
+                    \item[Syntaxe] ~\\
+                        \texttt{#2}
+                    \item[Description]
+                    #3
+                    \item[Valeur de retour]~\\
+                    #4
+                      \ifthenelse{\equal{#5}{}}
+                      {}
+                      {
+                        \item[Exemple d'utilisation] ~\\
+                        \begin{minipage}{0.9\linewidth}
+                        \addCode{#5}{#6}{#7}{#8}{#9}
+                        \end{minipage}
+                      }
+
+                  
+                \end{description} 
+            \end{minipage}
+        } %end fcolorbox
+    \end{center}
+    \normalsize
+}
+
+% Couleur des url et des liens internes.
+\hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
+
+%headers, footers
+\pagestyle{fancy}
+\rhead{INSA de Lyon -- 2011/2012}
+\cfoot{\thepage}
+\lfoot{[Héxanome H4303]}
